@@ -29,24 +29,34 @@ try {
 }
 
 // Middleware - Configure CORS properly
+// Middleware - Configure CORS properly for PRODUCTION
 app.use(cors({
   origin: function (origin, callback) {
     const allowedOrigins = [
-      "http://localhost:5173",   // Vite
-      "http://localhost:3000",   // CRA
-      process.env.CLIENT_URL    // Production frontend
-    ];
+      "http://localhost:5173",              // Vite dev
+      "http://localhost:3000",              // CRA dev
+      "https://ai-powered-career-navigator-5rsl.vercel.app", // ⚠️ REPLACE WITH YOUR ACTUAL FRONTEND URL
+      "https://your-frontend.netlify.app",  // ⚠️ If using Netlify
+      process.env.CLIENT_URL                // From environment variable
+    ].filter(Boolean); // Remove undefined values
 
-    // Allow requests with no origin (like Postman)
-    if (!origin || allowedOrigins.includes(origin)) {
+    // Allow requests with no origin (mobile apps, Postman, server-to-server)
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error("CORS policy blocked this request"));
+      console.error(`CORS blocked request from origin: ${origin}`);
+      callback(new Error(`CORS policy blocked this request from ${origin}`));
     }
   },
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization", "Accept"]
 }));
+
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));

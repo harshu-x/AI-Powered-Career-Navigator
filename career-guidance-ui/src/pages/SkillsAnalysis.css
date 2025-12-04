@@ -1,0 +1,413 @@
+/* Skills Analysis Styles */
+
+.analysis-result {
+  background-color: #2d3748;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.analysis-result pre {
+  color: #e2e8f0;
+  line-height: 1.6;
+}
+
+/* Form Controls */
+.form-control, .form-select {
+  background-color: #333;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: #333;
+  color: white;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 0.25rem rgba(66, 153, 225, 0.25);
+}
+
+/* File Input Styling */
+input[type="file"] {
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: #4a5568;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-right: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #2d3748;
+}
+
+/* Dark theme adjustments */
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Results formatting */
+.analysis-result h1,
+.analysis-result h2,
+.analysis-result h3 {
+  color: #90cdf4;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.analysis-result h1 {
+  font-size: 1.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+
+.analysis-result h2 {
+  font-size: 1.5rem;
+  margin-top: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+}
+
+.analysis-result h3 {
+  font-size: 1.2rem;
+  margin-top: 25px;
+  color: #63b3ed;
+}
+
+.analysis-result ul,
+.analysis-result ol {
+  padding-left: 20px;
+}
+
+.analysis-result li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.analysis-result strong {
+  color: #f6e05e;
+  font-weight: 600;
+}
+
+.analysis-result blockquote {
+  border-left: 3px solid #4299e1;
+  padding-left: 15px;
+  margin: 15px 0;
+  font-style: italic;
+  background-color: rgba(66, 153, 225, 0.1);
+  padding: 10px 15px;
+  border-radius: 0 5px 5px 0;
+}
+
+.analysis-result code {
+  background-color: #2d3748;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.analysis-result pre {
+  background-color: #2d3748;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 15px 0;
+}
+
+/* Resume textarea styling */
+.resume-textarea {
+  font-family: monospace !important;
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+  white-space: pre-wrap !important;
+}
+
+/* Analysis Results Styling */
+.analysis-results-container {
+  padding: 15px;
+}
+
+.analysis-card {
+  margin-bottom: 25px;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #2d3748;
+}
+
+.analysis-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.analysis-card .card-header {
+  padding: 15px 20px;
+  font-weight: 600;
+  border-bottom: none;
+}
+
+.analysis-card .card-body {
+  padding: 20px;
+}
+
+/* Overview Section */
+.overview-content .summary-text {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.sections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.section-box {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.section-box h5 {
+  margin-bottom: 15px;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+}
+
+.section-box ul {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.section-box li {
+  margin-bottom: 8px;
+}
+
+.strong-sections h5 {
+  color: #48bb78;
+}
+
+.weak-sections h5 {
+  color: #f56565;
+}
+
+.missing-sections h5 {
+  color: #ed8936;
+}
+
+/* Skills Section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.skills-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.skills-list li {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.present-skills li {
+  border-left: 4px solid #4299e1;
+}
+
+.missing-skills li {
+  border-left: 4px solid #f56565;
+}
+
+.missing-skills li strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #f6e05e;
+}
+
+.missing-skills li p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+/* Improvement Suggestions */
+.improvement-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.improvement-item:last-child {
+  margin-bottom: 0;
+}
+
+.improvement-item h5 {
+  color: #48bb78;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+}
+
+.improvement-item h6 {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #e2e8f0;
+}
+
+.original-content, .suggested-revision, .explanation {
+  margin-bottom: 15px;
+}
+
+.original-content blockquote {
+  background-color: rgba(255, 0, 0, 0.1);
+  border-left: 4px solid #f56565;
+  padding: 10px 15px;
+  margin: 0;
+  border-radius: 0 5px 5px 0;
+  font-style: italic;
+}
+
+.suggested-revision p {
+  background-color: rgba(0, 255, 0, 0.1);
+  border-left: 4px solid #48bb78;
+  padding: 10px 15px;
+  margin: 0;
+  border-radius: 0 5px 5px 0;
+}
+
+/* Skill Development */
+.skill-development-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.skill-development-item:last-child {
+  margin-bottom: 0;
+}
+
+.skill-development-item h5 {
+  color: #f6e05e;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+}
+
+.resources, .project-ideas {
+  margin-bottom: 15px;
+}
+
+.resources h6, .project-ideas h6 {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #e2e8f0;
+}
+
+/* ATS Optimization */
+.ats-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.missing-keywords h5, .formatting-tips h5 {
+  color: #fc8181;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+}
+
+/* File Details */
+.file-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.file-info-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 15px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.file-info-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.file-info-item h5 {
+  color: #a0aec0;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.file-info-item p {
+  color: #f7fafc;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+/* Extracted Text */
+.extracted-text {
+  background-color: #1a202c;
+  padding: 15px;
+  border-radius: 5px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  max-height: 300px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  margin-bottom: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Text colors */
+.text-muted {
+  color: #a0aec0 !important;
+}
+
+/* Resume Info Card */
+.resume-info-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-left: 4px solid #4299e1;
+}
+
+.resume-info-card p {
+  margin-bottom: 8px;
+}
+
+.resume-info-card strong {
+  color: #f6e05e;
+  margin-right: 5px;
+}
+
+.analysis-result pre code {
+  background-color: transparent;
+  padding: 0;
+}

@@ -1,0 +1,152 @@
+/* Skills Analysis Styles */
+
+.skills-analysis {
+  color: #fff;
+}
+
+.analysis-card {
+  background-color: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  height: 100%;
+}
+
+.upload-area {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.upload-area:hover {
+  border-color: #4299e1;
+  background-color: rgba(66, 153, 225, 0.05);
+}
+
+.upload-area.has-file {
+  border-color: #48bb78;
+  background-color: rgba(72, 187, 120, 0.05);
+}
+
+.upload-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #a0aec0;
+}
+
+.has-file .upload-icon {
+  color: #48bb78;
+}
+
+.placeholder-icon {
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+}
+
+.placeholder-card {
+  background-color: #1e1e1e;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.results-card {
+  max-height: 700px;
+  overflow-y: auto;
+}
+
+.result-section {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.result-section h4 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.section-icon {
+  margin-right: 10px;
+  font-size: 1.1rem;
+}
+
+.result-section ul {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.result-section li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.skills-list li {
+  background-color: rgba(229, 62, 62, 0.1);
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  list-style-type: none;
+}
+
+.skills-list {
+  padding-left: 0 !important;
+}
+
+/* Form Controls */
+.form-control, .form-select {
+  background-color: #2d3748;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 10px 15px;
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: #2d3748;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 0.25rem rgba(66, 153, 225, 0.25);
+  color: #fff;
+}
+
+.form-control::placeholder {
+  color: #a0aec0;
+}
+
+.form-label {
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .results-card {
+    margin-top: 20px;
+    max-height: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .upload-area {
+    padding: 20px;
+  }
+  
+  .upload-icon {
+    font-size: 2rem;
+  }
+  
+  .placeholder-icon {
+    font-size: 3rem;
+  }
+}

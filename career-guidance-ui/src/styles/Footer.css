@@ -1,0 +1,98 @@
+/* Simplified Footer Styles */
+.modern-footer {
+  background-color: #0a0a0a;
+  color: #b3b3b3;
+  padding: 60px 0 20px;
+  position: relative;
+}
+
+/* Footer brand */
+.footer-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+/* Footer description */
+.footer-description {
+  color: #b3b3b3;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Footer headings */
+.footer-heading {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: #4299e1;
+}
+
+/* Footer links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: #b3b3b3;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: #4299e1;
+}
+
+/* Footer contact */
+.footer-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-contact li {
+  margin-bottom: 15px;
+}
+
+.footer-contact a {
+  color: #b3b3b3;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+  color: #4299e1;
+}
+
+/* Footer bottom */
+.footer-bottom {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.copyright {
+  color: #777;
+  font-size: 0.9rem;
+}

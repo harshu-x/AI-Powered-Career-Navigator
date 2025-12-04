@@ -66,10 +66,15 @@ function SkillsAnalysis() {
       formData.append("resume", file);
       formData.append("jobDescription", jobDesc);
 
-      const response = await fetch("http://localhost:5000/api/analyze", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+  `${window.location.hostname === 'localhost' 
+    ? 'http://localhost:5000' 
+    : 'https://ai-powered-career-navigator-2.onrender.com'}/api/analyze`,
+  {
+    method: "POST",
+    body: formData,
+  }
+);
 
       if (!response.ok) {
         const errorData = await response.json();

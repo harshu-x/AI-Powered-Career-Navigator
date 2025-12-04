@@ -28,19 +28,16 @@ try {
   process.exit(1);
 }
 
-// Middleware - Configure CORS properly
 // Middleware - Configure CORS properly for PRODUCTION
 app.use(cors({
   origin: function (origin, callback) {
     const allowedOrigins = [
-      "http://localhost:5173",              // Vite dev
-      "http://localhost:3000",              // CRA dev
-      "https://ai-powered-career-navigator-5rsl.vercel.app", // ⚠️ REPLACE WITH YOUR ACTUAL FRONTEND URL
-      "https://your-frontend.netlify.app",  // ⚠️ If using Netlify
-      process.env.CLIENT_URL                // From environment variable
-    ].filter(Boolean); // Remove undefined values
+      "http://localhost:5173",
+      "http://localhost:3000",
+      "https://ai-powered-career-navigator-5rsl.vercel.app",
+      process.env.CLIENT_URL
+    ].filter(Boolean);
 
-    // Allow requests with no origin (mobile apps, Postman, server-to-server)
     if (!origin) {
       return callback(null, true);
     }
@@ -56,7 +53,6 @@ app.use(cors({
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization", "Accept"]
 }));
-
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
@@ -100,16 +96,16 @@ app.get('/', (req, res) => {
     version: '1.0.0',
     endpoints: {
       health: 'GET /',
-      mcq: 'POST /api/generate-mcqs',
-      study: 'POST /api/generate-study-material',
+      mcq: 'POST /api/questions',
+      study: 'POST /api/prep',
       resume: 'POST /api/analyze',
       chat: 'POST /api/chat'
     }
   });
 });
 
-// Generate MCQ Questions
-app.post('/api/generate-mcqs', async (req, res) => {
+// ✅ RENAMED: Generate MCQ Questions (avoid ad blockers)
+app.post('/api/questions', async (req, res) => {
   try {
     const { subject } = req.body;
 
@@ -197,8 +193,8 @@ Subject: ${subject}`;
   }
 });
 
-// Generate Study Material
-app.post('/api/generate-study-material', async (req, res) => {
+// ✅ RENAMED: Generate Study Material (avoid ad blockers)
+app.post('/api/prep', async (req, res) => {
   try {
     const { subject } = req.body;
 
@@ -209,7 +205,7 @@ app.post('/api/generate-study-material', async (req, res) => {
       });
     }
 
-    console.log(`📚 Generating study material for: ${subject}`);
+    console.log(`📚 Generating study prep for: ${subject}`);
 
     const model = genAI.getGenerativeModel({ model: 'models/gemini-pro-latest' });
 
@@ -449,8 +445,8 @@ app.use((req, res) => {
     error: 'Endpoint not found',
     availableEndpoints: {
       health: 'GET /',
-      mcq: 'POST /api/generate-mcqs',
-      study: 'POST /api/generate-study-material',
+      mcq: 'POST /api/questions',
+      study: 'POST /api/prep',
       resume: 'POST /api/analyze',
       chat: 'POST /api/chat'
     }
@@ -496,10 +492,10 @@ app.listen(PORT, () => {
   console.log(`🚀 Server is running on http://localhost:${PORT}`);
   console.log('🚀 ========================================\n');
   console.log('📚 Available API Endpoints:');
-  console.log(`   GET  http://localhost:${PORT}/                          - Health check`);
-  console.log(`   POST http://localhost:${PORT}/api/generate-mcqs         - Generate MCQ questions`);
-  console.log(`   POST http://localhost:${PORT}/api/generate-study-material - Generate study material`);
-  console.log(`   POST http://localhost:${PORT}/api/analyze               - Analyze resume`);
-  console.log(`   POST http://localhost:${PORT}/api/chat                  - Career guidance chat`);
+  console.log(`   GET  http://localhost:${PORT}/                  - Health check`);
+  console.log(`   POST http://localhost:${PORT}/api/questions     - Generate MCQ questions`);
+  console.log(`   POST http://localhost:${PORT}/api/prep          - Generate study prep`);
+  console.log(`   POST http://localhost:${PORT}/api/analyze       - Analyze resume`);
+  console.log(`   POST http://localhost:${PORT}/api/chat          - Career guidance chat`);
   console.log('\n✅ Server ready to accept requests!\n');
 });

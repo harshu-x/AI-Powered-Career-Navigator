@@ -11,11 +11,13 @@ export const useInterview = () => {
 };
 
 export const InterviewProvider = ({ children }) => {
-  // ⚠️ This reads from your environment variable
-  const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+  // 🔥 HARDCODED Backend URL - Change between local and production
+  const API_BASE = 'https://ai-powered-career-navigator-2.onrender.com';  // Production
+  // const API_BASE = 'http://localhost:5000';  // Local development (comment out for production)
+  
   const API_URL = `${API_BASE}/api`;
 
-  console.log('🔗 API Base URL:', API_BASE); // Debug log
+  console.log('🔗 API Base URL:', API_BASE);
 
   const [subject, setSubject] = useState('');
   const [mcqQuestions, setMcqQuestions] = useState([]);
@@ -30,7 +32,7 @@ export const InterviewProvider = ({ children }) => {
     setLoadingTest(true);
     setErrorTest('');
     try {
-      const url = `${API_URL}/generate-mcqs`;
+      const url = `${API_URL}/questions`;
       console.log('📡 Fetching MCQs from:', url);
       
       const res = await fetch(url, {
@@ -39,7 +41,7 @@ export const InterviewProvider = ({ children }) => {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        mode: 'cors', // Explicitly set CORS mode
+        mode: 'cors',
         body: JSON.stringify({ subject: topic }),
       });
 
@@ -81,8 +83,8 @@ export const InterviewProvider = ({ children }) => {
     setLoadingPrepare(true);
     setErrorPrepare('');
     try {
-      const url = `${API_URL}/generate-study-material`;
-      console.log('📡 Fetching study material from:', url);
+      const url = `${API_URL}/prep`;
+      console.log('📡 Fetching study prep from:', url);
       
       const res = await fetch(url, {
         method: 'POST',
@@ -90,7 +92,7 @@ export const InterviewProvider = ({ children }) => {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        mode: 'cors', // Explicitly set CORS mode
+        mode: 'cors',
         body: JSON.stringify({ subject: topic }),
       });
 
@@ -102,7 +104,7 @@ export const InterviewProvider = ({ children }) => {
       }
 
       const data = await res.json();
-      console.log('✅ Study material received:', data);
+      console.log('✅ Study prep received:', data);
 
       if (data.success && data.studyMaterial) {
         setStudyMaterial(data.studyMaterial);
@@ -121,7 +123,7 @@ export const InterviewProvider = ({ children }) => {
       }
       
       setErrorPrepare(errorMsg);
-      console.error('❌ Study Material Error:', err);
+      console.error('❌ Study Prep Error:', err);
       return null;
     } finally {
       setLoadingPrepare(false);

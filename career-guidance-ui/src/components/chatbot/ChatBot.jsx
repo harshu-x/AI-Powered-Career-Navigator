@@ -2,6 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Card, Form, Button, Spinner } from 'react-bootstrap';
 import './ChatBot.css';
 
+// ✅ AUTO-DETECT ENVIRONMENT
+const API_BASE = window.location.hostname === 'localhost' 
+  ? 'http://localhost:5000' 
+  : 'https://ai-powered-career-navigator-2.onrender.com';
+
 // Format assistant messages
 const formatMessage = (text) => {
   if (!text) return '';
@@ -56,30 +61,46 @@ How can I assist you today?`
 
   useEffect(scrollToBottom, [messages]);
 
-  // ✅ SEND MESSAGE TO YOUR GEMINI BACKEND (NOT DIRECT API)
+  // ✅ Log which backend is being used
+  useEffect(() => {
+    console.log('🔗 ChatBot using API:', API_BASE);
+  }, []);
+
+  // ✅ SEND MESSAGE TO YOUR GEMINI BACKEND
   const handleSendMessage = async (e) => {
     e.preventDefault();
     if (!input.trim()) return;
 
     const userMessage = { role: 'user', content: input };
     setMessages(prev => [...prev, userMessage]);
+    
+    const currentInput = input; // Save input before clearing
     setInput('');
     setIsLoading(true);
 
     try {
-     const API_BASE = window.location.hostname === 'localhost' 
-  ? 'http://localhost:5000' 
-  : 'https://ai-powered-career-navigator-2.onrender.com';
+      console.log('📤 Sending message to:', `${API_BASE}/api/chat`);
 
-const response = await fetch(`${API_BASE}/api/chat`, {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ message: input })
-});
+      const response = await fetch(`${API_BASE}/api/chat`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({ message: currentInput })
+      });
+
+      console.log('📥 Response status:', response.status);
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `Server error: ${response.status}`);
+      }
 
       const data = await response.json();
+      console.log('✅ Chat response received:', data);
 
-      if (data?.reply) {
+      if (data.success && data.reply) {
         setMessages(prev => [...prev, {
           role: 'assistant',
           content: data.reply
@@ -89,10 +110,10 @@ const response = await fetch(`${API_BASE}/api/chat`, {
       }
 
     } catch (error) {
-      console.error('Chat Error:', error);
+      console.error('❌ Chat Error:', error);
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: '⚠️ Server error. Please try again later.'
+        content: `⚠️ Sorry, I encountered an error: ${error.message}. Please try again.`
       }]);
     } finally {
       setIsLoading(false);

@@ -9,6 +9,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 dotenv.config();
 
+// Initialize Express app FIRST
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -27,12 +28,26 @@ try {
   process.exit(1);
 }
 
-// Middleware
+// Middleware - Configure CORS properly
 app.use(cors({
-  origin: process.env.CLIENT_URL || '*',
-  methods: ['GET', 'POST'],
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      "http://localhost:5173",   // Vite
+      "http://localhost:3000",   // CRA
+      process.env.CLIENT_URL    // Production frontend
+    ];
+
+    // Allow requests with no origin (like Postman)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS policy blocked this request"));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 

@@ -11,7 +11,11 @@ export const useInterview = () => {
 };
 
 export const InterviewProvider = ({ children }) => {
-  const API_URL = 'http://localhost:5000/api';
+  const API_BASE =
+  process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+
+const API_URL = `${API_BASE}/api`;
+
   
   const [subject, setSubject] = useState('');
   const [mcqQuestions, setMcqQuestions] = useState([]);

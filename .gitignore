@@ -1,0 +1,6 @@
+backend/.env
+backend/node_modules
+career-guidance-ui/node_modules
+uploads
+.env
+career-guidance-ui/.env

@@ -67,11 +67,15 @@ How can I assist you today?`
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input })
-      });
+     const API_BASE = window.location.hostname === 'localhost' 
+  ? 'http://localhost:5000' 
+  : 'https://ai-powered-career-navigator-2.onrender.com';
+
+const response = await fetch(`${API_BASE}/api/chat`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ message: input })
+});
 
       const data = await response.json();
 
